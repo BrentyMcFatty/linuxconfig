@@ -31,7 +31,7 @@ ShowInstallerIsoInfo() {
 }
 
 
-alias ls='ls --color=auto'
+alias ls='ls --color=always'
 alias ll='ls -lav --ignore=..'   # show long listing of all except ".."
 alias l='ls -lav --ignore=.?*'   # show long listing but no hidden dotfiles except "."
 
@@ -99,7 +99,7 @@ UpdateArchPackages() {
     if [ -n "$updates" ] ; then
         echo "Updates from upstream:" >&2
         echo "$updates" | sed 's|^|    |' >&2
-        _GeneralCmdCheck sudo pacman -Syu "$@"
+        _GeneralCmdCheck sudo pacman -Syyu --noconfirm --color=always "$@"
         return 0
     else
         echo "No upstream updates." >&2
@@ -118,7 +118,7 @@ UpdateAURPackages() {
         if [ -n "$updates" ] ; then
             echo "Updates from AUR:" >&2
             echo "$updates" | sed 's|^|    |' >&2
-            _GeneralCmdCheck yay -Syua "$@"
+            _GeneralCmdCheck yay -Syua --noconfirm --color=always "$@"
         else
             echo "No AUR updates." >&2
         fi
@@ -188,7 +188,13 @@ _Pacdiff() {
 alias update=UpdateAllPackages
 ################################################################################
 export PATH=$PATH:/home/razvii/bin
-neofetch
-#pfetch
+#neofetch
+pfetch
 alias rt='clear && bash'
 alias bashrc='nano ~/.bashrc'
+alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
+alias ~='cd ~'
+alias love='love2d'
+alias cp="cp -i"
+alias debc="ssh Razvii@192.168.0.5"
+alias hack="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash"
