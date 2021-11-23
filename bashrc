@@ -207,6 +207,7 @@ alias love='love2d'
 alias cp="cp -i"
 alias debc="ssh Razvii@192.168.0.5"
 alias hack="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash"
+alias rb="reboot"
 #################################################################################
 #Functions
 ########
